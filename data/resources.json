@@ -1,0 +1,17 @@
+[
+  {"name":"FreeCodeCamp","category":"Web Development","level":"Beginner","website":"https://freecodecamp.org"},
+  {"name":"W3Schools","category":"Web Development","level":"Beginner","website":"https://w3schools.com"},
+  {"name":"Codecademy","category":"Programming","level":"Beginner","website":"https://codecademy.com"},
+  {"name":"Khan Academy","category":"Computer Science","level":"Beginner","website":"https://khanacademy.org"},
+  {"name":"The Odin Project","category":"Web Development","level":"Beginner","website":"https://theodinproject.com"},
+  {"name":"CS50 Harvard","category":"Computer Science","level":"Beginner","website":"https://cs50.harvard.edu"},
+  {"name":"SoloLearn","category":"Programming","level":"Beginner","website":"https://sololearn.com"},
+  {"name":"Programiz","category":"Programming","level":"Beginner","website":"https://programiz.com"},
+  {"name":"MDN Web Docs","category":"Web Development","level":"Intermediate","website":"https://developer.mozilla.org"},
+  {"name":"GeeksforGeeks","category":"Programming","level":"Intermediate","website":"https://geeksforgeeks.org"},
+  {"name":"HackerRank","category":"Coding Practice","level":"Intermediate","website":"https://hackerrank.com"},
+  {"name":"LeetCode","category":"Coding Practice","level":"Advanced","website":"https://leetcode.com"},
+  {"name":"Coursera","category":"Online Courses","level":"All Levels","website":"https://coursera.org"},
+  {"name":"Udemy","category":"Online Courses","level":"All Levels","website":"https://udemy.com"},
+  {"name":"edX","category":"Online Courses","level":"All Levels","website":"https://edx.org"}
+]

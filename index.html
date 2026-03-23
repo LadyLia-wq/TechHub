@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Student Tech Resource Hub</title>
+
+        <meta name="description" content="Student learning resources for programming and technology.">
+        <meta name="author" content="Halia Khayat">
+
+        <meta property="og:title" content="Student Tech Resource Hub Learning Platform">
+        <meta property="og:description" content="Discover programming and technology learning resources organized for students to improve tech skills.">
+        <meta property="og:image" content="https://ladylia-wq.github.io/wdd231/finalproject/tech.png">
+        <meta property="og:url" content="https://ladylia-wq.github.io/wdd231/finalproject/index.html">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="styles/normalize.css">
+        <link rel="stylesheet" href="styles/styles.css">
+
+        <link rel="icon" href="images/favicon.ico">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <script type="module" src="scripts/main.js"></script> 
+    </head>
+
+    <body>
+
+        <header>
+            <nav>
+            <div class="logo">
+                <img src="images/logo.webp" alt="Student Tech Resource Hub Logo">
+                <h1>Tech Hub</h1>
+            </div>
+
+
+            <div class="menu-btn" id="menuBtn">☰</div>
+
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+
+            </nav>
+        </header>
+
+        <div class="hero-carousel">
+            <div class="carousel-track">
+
+                <div class="slide">
+                <img src="images/slide1.jpg">
+                </div>
+
+                <div class="slide">
+                <img src="images/slide2.jpg">
+                </div>
+
+                <div class="slide">
+                <img src="images/slide3.jpg">
+                </div>
+
+                <div class="slide">
+                <img src="images/slide4.jpg">
+                </div>
+
+            </div>
+
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        
+        <main>
+            <section class="platforms-section">
+                <h2>Top Platforms To Learn With</h2>
+                <div class="platforms-carousel-wrapper">
+                    <button class="platform-arrow left-arrow">&#8249;</button>
+                    <div class="platforms-track-container">
+                        <div class="platforms-track" id="platformsTrack"></div>
+                    </div>
+                    <button class="platform-arrow right-arrow">&#8250;</button>
+                </div>
+            </section>
+
+            <section class="featured-topics">
+                <div class="topics-text">
+                    <h2>Featured Learning Topics</h2>
+                    <p>
+                    Explore topics such as Web Development, Python Programming,
+                    Mobile App Development, and Computer Science fundamentals.
+                    Whether you are just starting out or leveling up your skills,
+                    we have resources tailored for every stage of your learning journey.
+                    Visit the Resources page to browse all available learning platforms.
+                    </p>
+                    <div style="text-align: center;">
+                        <a href="resources.html" class="explore-resources-btn">
+                            <i class="fa-solid fa-rocket"></i> Explore Resources
+                        </a>
+                    </div>
+                </div>
+
+                <div class="topics-image">
+                    <img src="images/resource.jpg"
+                        alt="Student coding on laptop">
+                </div>
+            </section>
+            
+            <section class="featured-courses">
+                    <h2>High Demand Free Courses</h2>
+                    <p class="section-subtitle">Start learning the most sought-after skills in tech — completely free.</p>
+
+                    <div class="courses-container">
+
+                        <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fa-brands fa-html5"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                        <span class="course-tag">High Demand</span>
+                        <p>
+                            Web development is the backbone of the internet. Every business needs 
+                            a website — making this one of the most employable skills you can learn. 
+                            Start with HTML, CSS, and JavaScript to build real websites from scratch.
+                        </p>
+                        <ul>
+                            <li><i class="fa-solid fa-circle-check"></i> HTML & CSS fundamentals</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Responsive design</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Build real projects</li>
+                        </ul>
+                        <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/" 
+                            target="_blank" class="learn-btn">
+                            <i class="fa-solid fa-rocket"></i> Learn Now
+                        </a>
+                        </div>
+
+                        <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fa-brands fa-js"></i>
+                        </div>
+                        <h3>JavaScript</h3>
+                        <span class="course-tag">High Demand</span>
+                        <p>
+                            JavaScript is the world's most popular programming language and the 
+                            only language that runs natively in browsers. It powers interactive 
+                            websites, mobile apps, and even servers — an essential skill for any developer.
+                        </p>
+                        <ul>
+                            <li><i class="fa-solid fa-circle-check"></i> Core language concepts</li>
+                            <li><i class="fa-solid fa-circle-check"></i> DOM manipulation</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Modern ES6+ features</li>
+                        </ul>
+                        <a href="https://javascript.info/" 
+                            target="_blank" class="learn-btn">
+                            <i class="fa-solid fa-rocket"></i> Learn Now
+                        </a>
+                        </div>
+
+                        <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <h3>Python</h3>
+                        <span class="course-tag">High Demand</span>
+                        <p>
+                            Python is the go-to language for data science, AI, automation, and 
+                            backend development. Its simple and readable syntax makes it perfect 
+                            for beginners, yet powerful enough for professional developers worldwide.
+                        </p>
+                        <ul>
+                            <li><i class="fa-solid fa-circle-check"></i> Beginner friendly syntax</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Data science & AI ready</li>
+                            <li><i class="fa-solid fa-circle-check"></i> Automation & scripting</li>
+                        </ul>
+                        <a href="https://www.python.org/about/gettingstarted/" 
+                            target="_blank" class="learn-btn">
+                            <i class="fa-solid fa-rocket"></i> Learn Now
+                        </a>
+                        </div>
+                    </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>©2026 Student Tech Resource Hub</p>
+        </footer>
+
+    </body> 
+</html>

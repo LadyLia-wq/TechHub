@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Tech Resource Hub</title>
+
+    <meta name="description" content="Student learning resources for programming and technology.">
+    <meta name="author" content="Halia Khayat">
+
+    <meta property="og:title" content="Student Tech Resource Hub Learning Platform">
+    <meta property="og:description" content="Discover programming and technology learning resources organized for students to improve tech skills.">
+    <meta property="og:image" content="https://ladylia-wq.github.io/wdd231/finalproject/images/preview.png">
+    <meta property="og:url" content="https://ladylia-wq.github.io/wdd231/finalproject/index.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script type="module" src="scripts/main.js"></script> 
+  </head>
+
+  <body>
+
+    <header>
+      <nav>
+      <div class="logo">
+        <img src="images/logo.webp" alt="Student Tech Resource Hub Logo">
+        <h1>Tech Hub</h1>
+      </div>
+
+      <div class="menu-btn" id="menuBtn">☰</div>
+
+      <ul id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="support.html">Support</a></li>
+      </ul>
+
+      </nav>
+    </header>
+
+    <main>
+      <div class="filter-bar">
+        <input type="text" id="searchInput" placeholder="Search resources...">
+
+        <select id="categoryFilter">
+          <option value="all">All levels</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+      </div>
+
+      <h2>Learning Resources</h2>
+
+      <p>
+      Below is a list of recommended platforms where students can learn
+      programming and technology skills.
+      </p>
+
+      <div id="resourcesContainer"></div>
+
+    </main>
+
+    <footer>
+    <p>©2026 Student Tech Resource Hub</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="resourceModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close-btn">&times;</span>
+
+        <h2 id="modalTitle"></h2>
+        <p id="modalCategory"></p>
+        <p id="modalLevel"></p>
+        <p id="modalLink"></p>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,17 +1,212 @@
 [
-  {"name":"FreeCodeCamp","category":"Web Development","level":"Beginner","website":"https://freecodecamp.org"},
-  {"name":"W3Schools","category":"Web Development","level":"Beginner","website":"https://w3schools.com"},
-  {"name":"Codecademy","category":"Programming","level":"Beginner","website":"https://codecademy.com"},
-  {"name":"Khan Academy","category":"Computer Science","level":"Beginner","website":"https://khanacademy.org"},
-  {"name":"The Odin Project","category":"Web Development","level":"Beginner","website":"https://theodinproject.com"},
-  {"name":"CS50 Harvard","category":"Computer Science","level":"Beginner","website":"https://cs50.harvard.edu"},
-  {"name":"SoloLearn","category":"Programming","level":"Beginner","website":"https://sololearn.com"},
-  {"name":"Programiz","category":"Programming","level":"Beginner","website":"https://programiz.com"},
-  {"name":"MDN Web Docs","category":"Web Development","level":"Intermediate","website":"https://developer.mozilla.org"},
-  {"name":"GeeksforGeeks","category":"Programming","level":"Intermediate","website":"https://geeksforgeeks.org"},
-  {"name":"HackerRank","category":"Coding Practice","level":"Intermediate","website":"https://hackerrank.com"},
-  {"name":"LeetCode","category":"Coding Practice","level":"Advanced","website":"https://leetcode.com"},
-  {"name":"Coursera","category":"Online Courses","level":"All Levels","website":"https://coursera.org"},
-  {"name":"Udemy","category":"Online Courses","level":"All Levels","website":"https://udemy.com"},
-  {"name":"edX","category":"Online Courses","level":"All Levels","website":"https://edx.org"}
+  {
+    "name": "FreeCodeCamp",
+    "title": "Responsive Web Design Certification",
+    "category": "Web Development",
+    "level": "Beginner",
+    "description": "Learn how to build responsive websites using HTML and CSS through hands-on projects. This course covers layout techniques, accessibility, and best practices used in modern web development.",
+    "topics": [
+      "HTML fundamentals",
+      "CSS layouts and Flexbox",
+      "Responsive design",
+      "Accessibility basics"
+    ],
+    "website": "https://www.freecodecamp.org/learn/2022/responsive-web-design/"
+  },
+  {
+    "name": "The Odin Project",
+    "title": "Full Stack JavaScript Path",
+    "category": "Full Stack Development",
+    "level": "Beginner",
+    "description": "A full-stack curriculum that teaches you how to build complete web applications from scratch. You'll learn frontend and backend development, version control, and real-world workflows.",
+    "topics": [
+      "Frontend and backend development",
+      "Git and GitHub",
+      "Databases",
+      "Node.js and APIs"
+    ],
+    "website": "https://www.theodinproject.com/paths/full-stack-javascript"
+  },
+  {
+    "name": "CS50 Harvard",
+    "title": "Introduction to Computer Science",
+    "category": "Computer Science",
+    "level": "Beginner",
+    "description": "A full-stack curriculum that teaches you how to build complete web applications from scratch. You'll learn frontend and backend development, version control, and real-world workflows.",
+    "topics": [
+      "Algorithms and data structures",
+      "C and Python programming",
+      "Memory management",
+      "Web development basics"
+    ],
+    "website": "https://cs50.harvard.edu/x/"
+  },
+  {
+    "name": "W3Schools",
+    "title": "SQL Tutorial",
+    "category": "Databases",
+    "level": "Beginner",
+    "description": "A beginner-friendly guide to SQL that teaches how to query, filter, and manage data in databases using simple examples and interactive exercises.",
+    "topics": [
+      "SELECT and filtering",
+      "Joins and relationships",
+      "Database structure",
+      "CRUD operations"
+    ],
+    "website": "https://www.w3schools.com/sql/"
+  },
+  {
+    "name": "Codecademy",
+    "title": "Learn JavaScript",
+    "category": "Programming",
+    "level": "Beginner",
+    "description": "An interactive JavaScript course that helps you understand programming fundamentals, build dynamic web pages, and practice coding in real time.",
+    "topics": [
+      "Core language concepts",
+      "DOM manipulation",
+      "Functions and loops",
+      "ES6+ features"
+    ],
+    "website": "https://www.codecademy.com/learn/introduction-to-javascript"
+  },
+  {
+    "name": "Khan Academy",
+    "title": "Intro to Algorithms",
+    "category": "Algorithms",
+    "level": "Beginner",
+    "description": "Learn how algorithms work through visual explanations and step-by-step examples, covering sorting, searching, and efficiency concepts.",
+    "topics": [
+      "Sorting algorithms",
+      "Searching techniques",
+      "Efficiency and complexity",
+      "Problem-solving strategies"
+    ],
+    "website": "https://www.khanacademy.org/computing/computer-science/algorithms"
+  },
+  {
+    "name": "Programiz",
+    "title": "Learn Python Programming",
+    "category": "Programming",
+    "level": "Beginner",
+    "description": "A step-by-step Python course that introduces core programming concepts, including variables, loops, functions, and file handling with clear examples.",
+    "topics": [
+      "Python syntax",
+      "Control structures",
+      "Functions and modules",
+      "File handling"
+    ],
+    "website": "https://www.programiz.com/python-programming"
+  },
+  {
+    "name": "MDN Web Docs",
+    "title": "HTML Basics Guide",
+    "category": "Web Development",
+    "level": "Intermediate",
+    "description": "A comprehensive guide to HTML that explains structure, semantic elements, and best practices for building accessible and modern web pages.",
+    "topics": [
+      "HTML structure",
+      "Semantic elements",
+      "Forms and inputs",
+      "Best practices"
+    ],
+    "website": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics"
+  },
+  {
+    "name": "GeeksforGeeks",
+    "title": "Data Structures and Algorithms",
+    "category": "Computer Science",
+    "level": "Intermediate",
+    "description": "Learn essential data structures and algorithms used in programming and technical interviews, with explanations, examples, and practice problems.",
+    "topics": [
+      "Arrays and linked lists",
+      "Stacks and queues",
+      "Trees and graphs",
+      "Algorithm analysis"
+    ],
+    "website": "https://www.geeksforgeeks.org/data-structures/"
+  },
+  {
+    "name": "HackerRank",
+    "title": "JavaScript Problem Solving",
+    "category": "Coding Practice",
+    "level": "Intermediate",
+    "description": "Practice coding problems that improve your logical thinking and problem-solving skills, with challenges focused on real-world scenarios.",
+    "topics": [
+      "Problem solving",
+      "Algorithms practice",
+      "Debugging skills",
+      "Time complexity"
+    ],
+    "website": "https://www.hackerrank.com/domains/tutorials/10-days-of-javascript"
+  },
+  {
+    "name": "LeetCode",
+    "title": "Algorithm Practice Problems",
+    "category": "Coding Practice",
+    "level": "Advanced",
+    "description": "A collection of advanced algorithm problems commonly used in technical interviews, designed to strengthen your coding and problem-solving skills.",
+    "topics": [
+      "Dynamic programming",
+      "Graph algorithms",
+      "Greedy techniques",
+      "Interview preparation"
+    ],
+    "website": "https://leetcode.com/problemset/"
+  },
+  {
+    "name": "Coursera",
+    "title": "Google IT Support Certificate",
+    "category": "IT Support",
+    "level": "Beginner",
+    "description": "A collection of advanced algorithm problems commonly used in technical interviews, designed to strengthen your coding and problem-solving skills.",
+    "topics": [
+      "Networking basics",
+      "System administration",
+      "Troubleshooting",
+      "Security fundamentals"
+    ],
+    "website": "https://www.coursera.org/professional-certificates/google-it-support"
+  },
+  {
+    "name": "Udemy",
+    "title": "Complete Web Development Bootcamp",
+    "category": "Full Stack Development",
+    "level": "Intermediate",
+    "description": "A complete web development bootcamp that covers frontend and backend technologies, including HTML, CSS, JavaScript, Node.js, and databases.",
+    "topics": [
+      "HTML, CSS, JavaScript",
+      "Node.js and Express",
+      "APIs and databases",
+      "Deployment"
+    ],
+    "website": "https://www.udemy.com/course/the-complete-web-development-bootcamp/"
+  },
+  {
+    "name": "edX",
+    "title": "CS50 Python",
+    "category": "Programming",
+    "level": "Intermediate",
+    "description": "A complete web development bootcamp that covers frontend and backend technologies, including HTML, CSS, JavaScript, Node.js, and databases.",
+    "topics": [
+      "Python fundamentals",
+      "Data structures",
+      "File I/O",
+      "Testing and debugging"
+    ],
+    "website": "https://www.edx.org/learn/python/harvard-university-cs50-s-introduction-to-programming-with-python"
+  },
+  {
+    "name": "IBM",
+    "title": "Data Science Professional Certificate",
+    "category": "Data Science",
+    "level": "Beginner",
+    "description": "Learn Python programming through practical exercises and real-world applications, focusing on problem-solving and software development skills.",
+    "topics": [
+      "Data analysis",
+      "Python for data science",
+      "Machine learning basics",
+      "Data visualization"
+    ],
+    "website": "https://www.coursera.org/professional-certificates/ibm-data-science"
+  }
 ]

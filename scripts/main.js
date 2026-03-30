@@ -42,18 +42,20 @@ const closeModal = document.querySelector("#closeModal");
 
 /* Handle card clicks */
 document.addEventListener("click", function(e) {
-  if (e.target.classList.contains("detailsBtn")) {
+  const button = e.target.closest(".detailsBtn");
 
+  if (button) {
     const resourceData = {
-      name: e.target.dataset.name,
-      category: e.target.dataset.category,
-      level: e.target.dataset.level,
-      link: e.target.dataset.link
+      name: button.dataset.name,
+      title: button.dataset.title,
+      category: button.dataset.category,
+      level: button.dataset.level,
+      description: button.dataset.description,
+      topics: JSON.parse(button.dataset.topics),
+      link: button.dataset.link
     };
 
-    /* Save to local storage */
     localStorage.setItem("lastResource", JSON.stringify(resourceData));
-
     openModal(resourceData);
   }
 });
@@ -61,39 +63,72 @@ document.addEventListener("click", function(e) {
 /* Open modal helper */
 function openModal(resource) {
   document.getElementById("modalTitle").textContent =
-    resource.name;
+    resource.title;
 
   document.getElementById("modalCategory").textContent =
-    "Category: " + resource.category;
+    resource.category + " • " + resource.level;
 
   document.getElementById("modalLevel").textContent =
-    "Level: " + resource.level;
+    resource.description;
 
-  document.getElementById("modalLink").innerHTML =
-    `<a href="${resource.link}" target="_blank" class="modal-visit-btn">
-      Visit Website
-    </a>`;
+  // build topics list
+  const topicsHTML = resource.topics
+    .map(topic => `
+      <li>
+        <i class="fa-solid fa-circle-check"></i>
+        ${topic}
+      </li>
+    `)
+    .join("");
 
-  modal.style.display = "block";
+  document.getElementById("modalLink").innerHTML = `
+    <ul class="modal-topics">
+      ${topicsHTML}
+    </ul>
+
+    <a href="${resource.link}" target="_blank" class="modal-visit-btn explore-resources-btn">
+      <i class="fa-solid fa-rocket"></i>
+      Visit Course
+    </a>
+  `;
+
+  modal.classList.add("show");
 }
 
 /* Close modal */
-// closeModal.onclick = () => {
-//   modal.style.display = "none";
-//   localStorage.removeItem("lastResource");
-// };
-
-// window.onclick = e => {
-//   if (e.target === modal) {
-//     modal.style.display = "none";
-//     localStorage.removeItem("lastResource");
-//   }
-// };
+if (closeModal) {
+  closeModal.onclick = () => {
+    modal.classList.remove("show");
+    localStorage.removeItem("lastResource");
+  };
+}
 
 //filter view
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 // const container = document.getElementById("resourcesContainer");
+
+function getPlatformIcon(name) {
+  const icons = {
+    "FreeCodeCamp": ["fa-brands", "fa-free-code-camp"],
+    "Codecademy": ["fa-solid", "fa-code"],
+    "Khan Academy": ["fa-solid", "fa-graduation-cap"],
+    "W3Schools": ["fa-solid", "fa-globe"],
+    "The Odin Project": ["fa-solid", "fa-fire"],
+    "CS50 Harvard": ["fa-solid", "fa-university"],
+    "Programiz": ["fa-brands", "fa-python"],
+    "MDN Web Docs": ["fa-brands", "fa-html5"],
+    "GeeksforGeeks": ["fa-solid", "fa-gears"],
+    "HackerRank": ["fa-solid", "fa-terminal"],
+    "LeetCode": ["fa-solid", "fa-code"],
+    "Coursera": ["fa-solid", "fa-c"],
+    "Udemy": ["fa-solid", "fa-u"],
+    "edX": ["fa-solid", "fa-book"],
+    "IBM": ["fa-solid", "fa-brain"]
+  };
+
+  return icons[name] || ["fa-solid", "fa-laptop-code"];
+}
 
 function displayResources(resourcesArray) {
   container.innerHTML = "";
@@ -102,27 +137,41 @@ function displayResources(resourcesArray) {
     const card = document.createElement("div");
     card.classList.add("card");
 
+    const domain = new URL(resource.website).hostname;
+    const logoUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
+
     card.innerHTML = `
-      <h3><i class="fa-solid fa-laptop-code"></i> ${resource.name}</h3>
+  <h3>
+    <img src="${logoUrl}" alt="${resource.name} logo" class="card-logo">
+    ${resource.name}
+  </h3>
 
-      <p>
-        <i class="fa-solid fa-layer-group"></i>
-        <strong>Category:</strong> ${resource.category}
-      </p>
+  <p>
+    <i class="fa-solid fa-book"></i>
+    <strong>Course:</strong> ${resource.title}
+  </p>
 
-      <p class="level ${resource.level.toLowerCase()}">
-        ${resource.level}
-      </p>
+  <p>
+    <i class="fa-solid fa-layer-group"></i>
+    <strong>Category:</strong> ${resource.category}
+  </p>
 
-      <button class="detailsBtn"
-        data-name="${resource.name}"
-        data-category="${resource.category}"
-        data-level="${resource.level}"
-        data-link="${resource.website}">
-        <i class="fa-solid fa-arrow-up-right-from-square"></i> 
-        View Details
-      </button>
-    `;
+  <p class="level ${resource.level.toLowerCase()}">
+    ${resource.level}
+  </p>
+
+  <button class="detailsBtn explore-resources-btn"
+    data-name="${resource.name}"
+    data-title="${resource.title}"
+    data-category="${resource.category}"
+    data-level="${resource.level}"
+    data-description="${resource.description}"
+    data-topics='${JSON.stringify(resource.topics)}'
+    data-link="${resource.website}">
+    <i class="fa-solid fa-arrow-up-right-from-square"></i> 
+    View Details
+  </button>
+`;
 
     container.appendChild(card);
   });
@@ -236,3 +285,33 @@ async function loadPlatformLogos() {
 }
 
 loadPlatformLogos();
+
+//Contact Form
+
+const contactForm = document.getElementById("contactForm");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const successModal = document.getElementById("successModal");
+    successModal.classList.add("show");
+
+    contactForm.reset();
+  });
+}
+
+const closeSuccess = document.getElementById("closeSuccess");
+if (closeSuccess) {
+  closeSuccess.addEventListener("click", () => {
+    document.getElementById("successModal").classList.remove("show");
+  });
+}
+
+// close if user clicks outside the modal
+window.addEventListener("click", (e) => {
+  const successModal = document.getElementById("successModal");
+  if (e.target === successModal) {
+    successModal.classList.remove("show");
+  }
+});

@@ -55,7 +55,7 @@
           Have questions or suggestions? Send us a message and we’ll get back to you.
         </p>
 
-        <form action="formaction.html" method="get" class="contact-form">
+        <form id="contactForm" class="contact-form">
 
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" required>
@@ -70,6 +70,18 @@
 
         </form>
       </section>
+
+      <div class="modal" id="successModal">
+        <div class="modal-content">
+          <span class="close-btn" id="closeSuccess">&times;</span>
+          <div class="success-icon">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h3>Message Sent Successfully</h3>
+          <p>Thank you for contacting Student Tech Resource Hub.
+          Our team will respond shortly.</p>
+        </div>
+      </div>
     </main>
 
 

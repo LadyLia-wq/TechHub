@@ -57,16 +57,25 @@
 
         <form id="contactForm" class="contact-form">
 
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required>
+            <div class="input-group">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" id="name" name="name" placeholder="Full Name" required>
+            </div>
 
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required>
+            <div class="input-group">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="email" id="email" name="email" placeholder="Email Address" required>
+            </div>
 
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+            <div class="input-group textarea-group">
+              <i class="fa-solid fa-comment-dots"></i>
+              <input type="text" id="message" name="message" placeholder="Write your message..." required></input>
+            </div>
 
-          <button type="submit">Send Message</button>
+          <button type="submit" class="explore-resources-btn">
+            <i class="fa-solid fa-paper-plane"></i>
+            Send Message
+          </button>
 
         </form>
       </section>

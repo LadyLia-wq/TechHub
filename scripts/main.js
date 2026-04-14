@@ -25,6 +25,22 @@ async function loadResources() {
   }
 }
 
+const header = document.querySelector("header");
+
+let isScrolled = false;
+
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+
+  if (scrollY > 40 && !isScrolled) {
+    header.classList.add("scrolled");
+    isScrolled = true;
+  } else if (scrollY < 10 && isScrolled) {
+    header.classList.remove("scrolled");
+    isScrolled = false;
+  }
+});
+
 /* Highlight active navigation link */
 const currentPage = window.location.pathname.split("/").pop();
 
@@ -106,29 +122,29 @@ if (closeModal) {
 //filter view
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
+
 // const container = document.getElementById("resourcesContainer");
+// function getPlatformIcon(name) {
+//   const icons = {
+//     "FreeCodeCamp": ["fa-brands", "fa-free-code-camp"],
+//     "Codecademy": ["fa-solid", "fa-code"],
+//     "Khan Academy": ["fa-solid", "fa-graduation-cap"],
+//     "W3Schools": ["fa-solid", "fa-globe"],
+//     "The Odin Project": ["fa-solid", "fa-fire"],
+//     "CS50 Harvard": ["fa-solid", "fa-university"],
+//     "Programiz": ["fa-brands", "fa-python"],
+//     "MDN Web Docs": ["fa-brands", "fa-html5"],
+//     "GeeksforGeeks": ["fa-solid", "fa-gears"],
+//     "HackerRank": ["fa-solid", "fa-terminal"],
+//     "LeetCode": ["fa-solid", "fa-code"],
+//     "Coursera": ["fa-solid", "fa-c"],
+//     "Udemy": ["fa-solid", "fa-u"],
+//     "edX": ["fa-solid", "fa-book"],
+//     "IBM": ["fa-solid", "fa-brain"]
+//   };
 
-function getPlatformIcon(name) {
-  const icons = {
-    "FreeCodeCamp": ["fa-brands", "fa-free-code-camp"],
-    "Codecademy": ["fa-solid", "fa-code"],
-    "Khan Academy": ["fa-solid", "fa-graduation-cap"],
-    "W3Schools": ["fa-solid", "fa-globe"],
-    "The Odin Project": ["fa-solid", "fa-fire"],
-    "CS50 Harvard": ["fa-solid", "fa-university"],
-    "Programiz": ["fa-brands", "fa-python"],
-    "MDN Web Docs": ["fa-brands", "fa-html5"],
-    "GeeksforGeeks": ["fa-solid", "fa-gears"],
-    "HackerRank": ["fa-solid", "fa-terminal"],
-    "LeetCode": ["fa-solid", "fa-code"],
-    "Coursera": ["fa-solid", "fa-c"],
-    "Udemy": ["fa-solid", "fa-u"],
-    "edX": ["fa-solid", "fa-book"],
-    "IBM": ["fa-solid", "fa-brain"]
-  };
-
-  return icons[name] || ["fa-solid", "fa-laptop-code"];
-}
+//   return icons[name] || ["fa-solid", "fa-laptop-code"];
+// }
 
 function displayResources(resourcesArray) {
   container.innerHTML = "";
@@ -147,12 +163,12 @@ function displayResources(resourcesArray) {
   </h3>
 
   <p>
-    <i class="fa-solid fa-book"></i>
+    <i class="fa-solid fa-laptop-code"></i>
     <strong>Course:</strong> ${resource.title}
   </p>
 
   <p>
-    <i class="fa-solid fa-layer-group"></i>
+    <i class="fa-solid fa-code"></i>
     <strong>Category:</strong> ${resource.category}
   </p>
 
@@ -193,7 +209,28 @@ function filterResources() {
     return matchesSearch && matchesLevel;
   });
 
-  displayResources(filtered);
+  // 🔥 Animate out
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(card => {
+    card.classList.add("fade-out");
+  });
+
+  // Wait for fade-out, then update
+  setTimeout(() => {
+    displayResources(filtered);
+
+    // 🔥 Animate in
+    const newCards = document.querySelectorAll(".card");
+    newCards.forEach((card, index) => {
+      card.classList.add("fade-out"); // start hidden
+
+      setTimeout(() => {
+        card.classList.remove("fade-out");
+        card.classList.add("fade-in");
+      }, index * 80); // stagger effect
+    });
+
+  }, 200);
 }
 
 if (searchInput && categoryFilter) {
@@ -270,13 +307,11 @@ async function loadPlatformLogos() {
     const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
 
     leftArrow.addEventListener("click", () => {
-      position = Math.max(position - step, 0);
-      track.style.transform = `translateX(-${position}px)`;
+      track.parentElement.scrollBy({ left: -200, behavior: "smooth" });
     });
 
     rightArrow.addEventListener("click", () => {
-      position = Math.min(position + step, maxScroll);
-      track.style.transform = `translateX(-${position}px)`;
+      track.parentElement.scrollBy({ left: 200, behavior: "smooth" });
     });
 
   } catch (error) {
@@ -285,6 +320,30 @@ async function loadPlatformLogos() {
 }
 
 loadPlatformLogos();
+
+//Steps Card
+const stepCards = document.querySelectorAll(".step-card");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      // stagger animation
+      setTimeout(() => {
+        entry.target.classList.add("show");
+      }, index * 150);
+
+      observer.unobserve(entry.target); // animate once
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+stepCards.forEach(card => observer.observe(card));
+
+const whyItems = document.querySelectorAll(".why-item");
+
+whyItems.forEach(item => observer.observe(item));
 
 //Contact Form
 

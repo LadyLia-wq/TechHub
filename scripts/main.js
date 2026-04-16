@@ -4,7 +4,9 @@ const navMenu = document.querySelector("#navMenu");
 
 if (menuBtn && navMenu) {
   menuBtn.addEventListener("click", () => {
-    navMenu.classList.toggle("show");
+    const isOpen = navMenu.classList.toggle("show");
+    menuBtn.textContent = isOpen ? "✕" : "☰";
+    menuBtn.classList.toggle("open", isOpen);
   });
 }
 
@@ -209,7 +211,7 @@ function filterResources() {
     return matchesSearch && matchesLevel;
   });
 
-  // 🔥 Animate out
+  // Animate out
   const cards = document.querySelectorAll(".card");
   cards.forEach(card => {
     card.classList.add("fade-out");
@@ -219,7 +221,7 @@ function filterResources() {
   setTimeout(() => {
     displayResources(filtered);
 
-    // 🔥 Animate in
+    // Animate in
     const newCards = document.querySelectorAll(".card");
     newCards.forEach((card, index) => {
       card.classList.add("fade-out"); // start hidden
@@ -279,7 +281,7 @@ async function loadPlatformLogos() {
   if (!track) return;
 
   try {
-    const response = await fetch("data/resources.json");
+    const response = await fetch("data/platforms.json");
     const resources = await response.json();
 
     resources.forEach(resource => {

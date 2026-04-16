@@ -1,0 +1,62 @@
+[
+  {
+    "name": "FreeCodeCamp",
+    "website": "https://www.freecodecamp.org/"
+  },
+  {
+    "name": "The Odin Project",
+    "website": "https://www.theodinproject.com/"
+  },
+  {
+    "name": "CS50 Harvard",
+    "website": "https://cs50.harvard.edu/"
+  },
+  {
+    "name": "W3Schools",
+    "website": "https://www.w3schools.com/"
+  },
+  {
+    "name": "Codecademy",
+    "website": "https://www.codecademy.com/"
+  },
+  {
+    "name": "Khan Academy",
+    "website": "https://www.khanacademy.org/"
+  },
+  {
+    "name": "Programiz",
+    "website": "https://www.programiz.com/"
+  },
+  {
+    "name": "MDN Web Docs",
+    "website": "https://developer.mozilla.org/"
+  },
+  {
+    "name": "GeeksforGeeks",
+    "website": "https://www.geeksforgeeks.org/"
+  },
+  {
+    "name": "HackerRank",
+    "website": "https://www.hackerrank.com/"
+  },
+  {
+    "name": "LeetCode",
+    "website": "https://leetcode.com/"
+  },
+  {
+    "name": "Coursera",
+    "website": "https://www.coursera.org/"
+  },
+  {
+    "name": "Udemy",
+    "website": "https://www.udemy.com/"
+  },
+  {
+    "name": "edX",
+    "website": "https://www.edx.org/"
+  },
+  {
+    "name": "IBM",
+    "website": "https://www.ibm.com/"
+  }
+]

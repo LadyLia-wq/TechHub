@@ -30,7 +30,6 @@ async function loadResources() {
 
 const header = document.querySelector("header");
 
-/* ===== SMOOTH SCROLL FIX ===== */
 let ticking = false;
 
 window.addEventListener("scroll", () => {
@@ -62,7 +61,6 @@ document.querySelectorAll("nav a").forEach(link => {
 
 loadResources();
 
-/* Move all modals to document.body so they are never trapped inside flex layout */
 document.querySelectorAll(".modal").forEach(m => document.body.appendChild(m));
 
 /* Modal elements */
@@ -350,7 +348,6 @@ const scrollObserver = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
     } else {
-      // Remove so it re-animates next time it scrolls into view
       entry.target.classList.remove("visible");
     }
   });

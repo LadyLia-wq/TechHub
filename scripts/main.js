@@ -17,9 +17,9 @@ async function loadResources() {
 
   try {
     const response = await fetch("data/resources.json");
-    resources = await response.json(); // store globally
+    resources = await response.json();
 
-    displayResources(resources); // use one display system
+    displayResources(resources);
 
   } catch (error) {
     container.innerHTML = "<p>Failed to load resources.</p>";
@@ -89,7 +89,6 @@ function openModal(resource) {
   document.getElementById("modalLevel").textContent =
     resource.description;
 
-  // build topics list
   const topicsHTML = resource.topics
     .map(topic => `
       <li>
@@ -113,7 +112,7 @@ function openModal(resource) {
   modal.classList.add("show");
 }
 
-/* Close modal */
+/* Close modal via close button */
 if (closeModal) {
   closeModal.onclick = () => {
     modal.classList.remove("show");
@@ -121,32 +120,24 @@ if (closeModal) {
   };
 }
 
-//filter view
+/* FIX: close ALL modals when clicking outside modal-content */
+window.addEventListener("click", (e) => {
+  const successModal = document.getElementById("successModal");
+  const resourceModal = document.getElementById("resourceModal");
+
+  if (successModal && e.target === successModal) {
+    successModal.classList.remove("show");
+  }
+
+  if (resourceModal && e.target === resourceModal) {
+    resourceModal.classList.remove("show");
+    localStorage.removeItem("lastResource");
+  }
+});
+
+/* Filter view */
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
-
-// const container = document.getElementById("resourcesContainer");
-// function getPlatformIcon(name) {
-//   const icons = {
-//     "FreeCodeCamp": ["fa-brands", "fa-free-code-camp"],
-//     "Codecademy": ["fa-solid", "fa-code"],
-//     "Khan Academy": ["fa-solid", "fa-graduation-cap"],
-//     "W3Schools": ["fa-solid", "fa-globe"],
-//     "The Odin Project": ["fa-solid", "fa-fire"],
-//     "CS50 Harvard": ["fa-solid", "fa-university"],
-//     "Programiz": ["fa-brands", "fa-python"],
-//     "MDN Web Docs": ["fa-brands", "fa-html5"],
-//     "GeeksforGeeks": ["fa-solid", "fa-gears"],
-//     "HackerRank": ["fa-solid", "fa-terminal"],
-//     "LeetCode": ["fa-solid", "fa-code"],
-//     "Coursera": ["fa-solid", "fa-c"],
-//     "Udemy": ["fa-solid", "fa-u"],
-//     "edX": ["fa-solid", "fa-book"],
-//     "IBM": ["fa-solid", "fa-brain"]
-//   };
-
-//   return icons[name] || ["fa-solid", "fa-laptop-code"];
-// }
 
 function displayResources(resourcesArray) {
   container.innerHTML = "";
@@ -211,25 +202,22 @@ function filterResources() {
     return matchesSearch && matchesLevel;
   });
 
-  // Animate out
   const cards = document.querySelectorAll(".card");
   cards.forEach(card => {
     card.classList.add("fade-out");
   });
 
-  // Wait for fade-out, then update
   setTimeout(() => {
     displayResources(filtered);
 
-    // Animate in
     const newCards = document.querySelectorAll(".card");
     newCards.forEach((card, index) => {
-      card.classList.add("fade-out"); // start hidden
+      card.classList.add("fade-out");
 
       setTimeout(() => {
         card.classList.remove("fade-out");
         card.classList.add("fade-in");
-      }, index * 80); // stagger effect
+      }, index * 80);
     });
 
   }, 200);
@@ -240,7 +228,7 @@ if (searchInput && categoryFilter) {
   categoryFilter.addEventListener("change", filterResources);
 }
 
-//auto carousel
+/* Auto carousel */
 const track = document.querySelector(".carousel-track");
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
@@ -265,7 +253,6 @@ if (track && slides.length > 0) {
     updateDots(currentIndex);
   }
 
-  // Click on dot to jump to slide
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => moveSlide(i));
   });
@@ -275,7 +262,7 @@ if (track && slides.length > 0) {
   }, 4000);
 }
 
-// Platform logos carousel
+/* Platform logos carousel */
 async function loadPlatformLogos() {
   const track = document.getElementById("platformsTrack");
   if (!track) return;
@@ -301,20 +288,18 @@ async function loadPlatformLogos() {
       track.appendChild(a);
     });
 
-    // Arrow navigation
     const leftArrow = document.querySelector(".left-arrow");
     const rightArrow = document.querySelector(".right-arrow");
-    let position = 0;
-    const step = 200; // px to scroll per click
-    const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
 
-    leftArrow.addEventListener("click", () => {
-      track.parentElement.scrollBy({ left: -200, behavior: "smooth" });
-    });
+    if (leftArrow && rightArrow) {
+      leftArrow.addEventListener("click", () => {
+        track.parentElement.scrollBy({ left: -200, behavior: "smooth" });
+      });
 
-    rightArrow.addEventListener("click", () => {
-      track.parentElement.scrollBy({ left: 200, behavior: "smooth" });
-    });
+      rightArrow.addEventListener("click", () => {
+        track.parentElement.scrollBy({ left: 200, behavior: "smooth" });
+      });
+    }
 
   } catch (error) {
     console.error("Failed to load platform logos:", error);
@@ -323,18 +308,17 @@ async function loadPlatformLogos() {
 
 loadPlatformLogos();
 
-//Steps Card
+/* Steps card scroll animation */
 const stepCards = document.querySelectorAll(".step-card");
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
-      // stagger animation
       setTimeout(() => {
         entry.target.classList.add("show");
       }, index * 150);
 
-      observer.unobserve(entry.target); // animate once
+      observer.unobserve(entry.target);
     }
   });
 }, {
@@ -347,8 +331,7 @@ const whyItems = document.querySelectorAll(".why-item");
 
 whyItems.forEach(item => observer.observe(item));
 
-//Contact Form
-
+/* Contact Form */
 const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
@@ -368,11 +351,3 @@ if (closeSuccess) {
     document.getElementById("successModal").classList.remove("show");
   });
 }
-
-// close if user clicks outside the modal
-window.addEventListener("click", (e) => {
-  const successModal = document.getElementById("successModal");
-  if (e.target === successModal) {
-    successModal.classList.remove("show");
-  }
-});

@@ -27,19 +27,27 @@ async function loadResources() {
   }
 }
 
+
 const header = document.querySelector("header");
 
-let isScrolled = false;
+/* ===== SMOOTH SCROLL FIX ===== */
+let ticking = false;
 
 window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
 
-  if (scrollY > 40 && !isScrolled) {
-    header.classList.add("scrolled");
-    isScrolled = true;
-  } else if (scrollY < 10 && isScrolled) {
-    header.classList.remove("scrolled");
-    isScrolled = false;
+      if (scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+      ticking = false;
+    });
+
+    ticking = true;
   }
 });
 
@@ -53,6 +61,9 @@ document.querySelectorAll("nav a").forEach(link => {
 });
 
 loadResources();
+
+/* Move all modals to document.body so they are never trapped inside flex layout */
+document.querySelectorAll(".modal").forEach(m => document.body.appendChild(m));
 
 /* Modal elements */
 const modal = document.querySelector("#resourceModal");
@@ -308,6 +319,47 @@ async function loadPlatformLogos() {
 
 loadPlatformLogos();
 
+/* HOMEPAGE SCROLL ANIMATIONS */
+// Assign animation classes to homepage sections
+const sectionAnimations = [
+  { selector: ".platforms-section",  cls: "anim-fade-up"    },
+  { selector: ".how-to-start h2",    cls: "anim-fade-up"    },
+  { selector: ".how-to-start .section-subtitle", cls: "anim-fade-up" },
+  { selector: ".featured-topics .topics-text",   cls: "anim-fade-left"  },
+  { selector: ".featured-topics .topics-image",  cls: "anim-fade-right" },
+  { selector: ".featured-courses h2",            cls: "anim-fade-up"    },
+  { selector: ".featured-courses .section-subtitle", cls: "anim-fade-up" },
+  { selector: ".why-us-alt .why-text",           cls: "anim-fade-left"  },
+  { selector: ".cta-banner .cta-content",        cls: "anim-fade-up"    },
+];
+
+sectionAnimations.forEach(({ selector, cls }) => {
+  document.querySelectorAll(selector).forEach(el => {
+    el.classList.add(cls);
+  });
+});
+
+// Stagger course cards
+document.querySelectorAll(".course-card").forEach((card, i) => {
+  card.classList.add("anim-fade-up");
+  card.style.transitionDelay = `${i * 0.15}s`;
+});
+
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    } else {
+      // Remove so it re-animates next time it scrolls into view
+      entry.target.classList.remove("visible");
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(
+  ".anim-fade-up, .anim-fade-left, .anim-fade-right"
+).forEach(el => scrollObserver.observe(el));
+
 /* Steps card scroll animation */
 const stepCards = document.querySelectorAll(".step-card");
 
@@ -317,8 +369,8 @@ const observer = new IntersectionObserver((entries) => {
       setTimeout(() => {
         entry.target.classList.add("show");
       }, index * 150);
-
-      observer.unobserve(entry.target);
+    } else {
+      entry.target.classList.remove("show");
     }
   });
 }, {
